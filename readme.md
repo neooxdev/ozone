@@ -36,6 +36,46 @@ db.delete("user:123")
 
 ---
 
+## project structure
+
+ozone/
+├── pom.xml                  # Maven build configuration and dependencies
+├── README.md                # Project documentation
+├── Makefile                 # Helper commands for build/run tasks
+├── docker-compose.yml       # Runs Kafka and related services locally
+│
+├── src/                     # Main source code
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/ozone/
+│   │   │       ├── Ozone.java            # Application entry point / server bootstrap
+│   │   │       ├── store/                # Core in-memory key-value storage logic
+│   │   │       │   ├── Store.java        # Main store implementation
+│   │   │       │   └── KVEntry.java      # Key-value data model
+│   │   │       ├── wal/                  # Write-Ahead Log (Kafka integration)
+│   │   │       │   ├── WALManager.java   # Handles producing/consuming WAL events
+│   │   │       │   └── WALEntry.java     # WAL record structure
+│   │   │       ├── server/               # Networking layer
+│   │   │       │   ├── TcpServer.java    # TCP server handling client connections
+│   │   │       │   ├── RespProtocol.java # Protocol parsing (request/response format)
+│   │   │       │   └── LRUCache.java     # In-memory cache for frequently used keys
+│   │   │       └── RecoveryService.java  # Rebuilds store state from WAL after crash
+│   │   └── resources/
+│   │       └── ozone.properties          # Application configuration
+│   │
+│   └── test/                             # Test and benchmarking code
+│       ├── java/
+│       │   └── com/ozone/
+│       │       ├── StoreTest.java        # Unit tests for key-value store
+│       │       └── OzoneBenchmark.java   # Performance benchmarking
+│       └── resources/
+│           └── test.properties           # Test configuration
+│
+└── deploy/
+    └── docker/
+        └── Dockerfile                    # Docker image build instructions
+
+---
 ## Contributing
 
 1. Fork the repo  
@@ -49,3 +89,5 @@ db.delete("user:123")
 ## License
 
 MIT License – see [LICENSE](LICENSE)
+
+

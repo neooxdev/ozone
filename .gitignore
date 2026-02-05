@@ -1,0 +1,22 @@
+# Maven / Java build
+target/
+*.log
+*.class
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Docker
+docker/*.log
+
+# Test output
+surefire-reports/
