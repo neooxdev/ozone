@@ -36,8 +36,9 @@ db.delete("user:123")
 
 ---
 
-## project structure
+## Project Structure
 
+```text
 ozone/
 ├── pom.xml                  # Maven build configuration and dependencies
 ├── README.md                # Project documentation
@@ -74,8 +75,10 @@ ozone/
 └── deploy/
     └── docker/
         └── Dockerfile                    # Docker image build instructions
+```
 
 ---
+
 ## Contributing
 
 1. Fork the repo  
@@ -89,5 +92,3 @@ ozone/
 ## License
 
 MIT License – see [LICENSE](LICENSE)
-
-
